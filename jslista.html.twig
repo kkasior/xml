@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Lista z XML:</h2>
+
+<button type="button" onclick="loadDoc()">Show List</button>
+
+<ul id="literki"></ul>
+
+
+<script>
+    function loadDoc() {
+        var req = new XMLHttpRequest();
+        req.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var txt = this.responseText;
+
+                document.getElementById("literki").innerHTML = txt;
+            }
+        };
+        req.open("GET", "http://localhost:8000/detailslist", true);
+        req.send();
+    }
+</script>
+
+</body>
+</html>
